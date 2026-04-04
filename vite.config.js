@@ -13,7 +13,4 @@ export default defineConfig({
       },
     },
   },
-  define: {
-    'import.meta.env.VITE_API_URL': JSON.stringify('https://raseel-backend.onrender.com/api'),
-  },
 });
