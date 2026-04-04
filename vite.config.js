@@ -1,4 +1,4 @@
-﻿import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
@@ -12,5 +12,8 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+  },
+  define: {
+    'import.meta.env.VITE_API_URL': JSON.stringify('https://raseel-backend.onrender.com/api'),
   },
 });
