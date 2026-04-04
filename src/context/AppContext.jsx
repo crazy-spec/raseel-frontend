@@ -54,7 +54,7 @@ export function AppProvider(props) {
     if (auth.isAuthenticated && auth.token) {
       dispatch({ type: "SET_LOADING", payload: true });
 
-      fetch("http://127.0.0.1:8000/api/businesses/", {
+      fetch("https://raseel-backend.onrender.com/api/businesses/", {
         headers: { "Authorization": "Bearer " + auth.token }
       })
       .then(function(res) {
