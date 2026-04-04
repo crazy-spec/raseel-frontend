@@ -1,7 +1,7 @@
 ﻿import axios from 'axios';
 
 var api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'https://raseel-backend.onrender.com/api',
+  baseURL: 'https://raseel-backend.onrender.com/api',
   headers: { 'Content-Type': 'application/json' },
 });
 
