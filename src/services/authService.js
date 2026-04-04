@@ -1,4 +1,4 @@
-﻿var API_BASE = "http://127.0.0.1:8000/api/auth";
+﻿var API_BASE = https://raseel-backend.onrender.com/api
 
 var authService = {
   login: function(email, password) {
