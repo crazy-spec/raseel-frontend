@@ -90,7 +90,7 @@ export default function OnboardingPage() {
 
     var token = auth.token;
 
-    fetch("http://127.0.0.1:8000/api/businesses/", {
+    fetch("https://raseel-backend.onrender.com/api/businesses/",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -111,8 +111,7 @@ export default function OnboardingPage() {
       }
       return res.json();
     })
-    .then(function(business) {
-      return fetch("http://127.0.0.1:8000/api/products/seed/" + business.id, {
+    .then(function(business) {fetch("https://raseel-backend.onrender.com/api/products/seed/" + business.id,
         method: "POST",
         headers: {
           "Authorization": "Bearer " + token
