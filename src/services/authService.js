@@ -16,6 +16,21 @@ var authService = {
     });
   },
 
+  getMe: function(token) {
+    return fetch(API_BASE + '/auth/me', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    }).then(function(res) {
+      if (!res.ok) {
+        throw new Error('Token invalid');
+      }
+      return res.json();
+    });
+  },
+
   logout: function() {
     localStorage.removeItem('raseel_token');
     localStorage.removeItem('raseel_user');
