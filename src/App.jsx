@@ -23,6 +23,7 @@ import AnalyticsPage from './pages/AnalyticsPage';
 import SettingsPage from './pages/SettingsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import PrivacyPage from './pages/PrivacyPage';
+import CampaignsPage from './pages/CampaignsPage';
 
 export default function App() {
   return (
@@ -60,6 +61,7 @@ export default function App() {
                 <Route path='/orders' element={<OrdersPage />} />
                 <Route path='/customers' element={<CustomersPage />} />
                 <Route path='/agents' element={<AgentsPage />} />
+                <Route path='/campaigns' element={<CampaignsPage />} />
                 <Route path='/leads' element={<LeadFinderPage />} />
                 <Route path='/conversations' element={<ConversationsPage />} />
                 <Route path='/pdpl' element={<PDPLPage />} />
