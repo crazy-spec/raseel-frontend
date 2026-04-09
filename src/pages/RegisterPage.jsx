@@ -1,7 +1,9 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Mail, Lock, Eye, EyeOff, MessageCircle, ArrowRight, User, Phone } from "lucide-react";
+
+const BACKEND = "https://raseel-backend.onrender.com/api";
 
 export default function RegisterPage() {
   var navigate = useNavigate();
@@ -39,9 +41,14 @@ export default function RegisterPage() {
   var showPass = showPassState[0];
   var setShowPass = showPassState[1];
 
+  var statusState = useState("");
+  var statusMsg = statusState[0];
+  var setStatusMsg = statusState[1];
+
   var handleRegister = function(e) {
     e.preventDefault();
     setError("");
+    setStatusMsg("");
 
     if (password.length < 6) {
       setError("Password must be at least 6 characters.");
@@ -54,6 +61,7 @@ export default function RegisterPage() {
     }
 
     setLoading(true);
+    setStatusMsg("Connecting to server...");
 
     var data = {
       full_name: fullName,
@@ -64,12 +72,19 @@ export default function RegisterPage() {
       data.phone = phone.trim();
     }
 
-    auth.register(data)
+    // Wake up backend first then register
+    fetch(BACKEND + "/health")
       .then(function() {
+        setStatusMsg("Creating your account...");
+        return auth.register(data);
+      })
+      .then(function() {
+        setStatusMsg("");
         navigate("/onboarding");
       })
       .catch(function(err) {
         setError(err.message || "Registration failed. Please try again.");
+        setStatusMsg("");
         setLoading(false);
       });
   };
@@ -128,6 +143,13 @@ export default function RegisterPage() {
             {error && (
               <div className="mb-6 bg-red-50 border border-red-200 rounded-xl p-4">
                 <p className="text-red-700 text-sm">{error}</p>
+              </div>
+            )}
+
+            {statusMsg && (
+              <div className="mb-6 bg-indigo-50 border border-indigo-200 rounded-xl p-4 flex items-center gap-3">
+                <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin flex-shrink-0"></div>
+                <p className="text-indigo-700 text-sm">{statusMsg}</p>
               </div>
             )}
 
@@ -252,4 +274,3 @@ export default function RegisterPage() {
     </div>
   );
 }
-
