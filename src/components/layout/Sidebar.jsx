@@ -1,4 +1,4 @@
-﻿import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import { useAuth } from '../../context/AuthContext';
 import {
@@ -16,6 +16,7 @@ import {
   Target,
   X,
   LogOut,
+  Megaphone,
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -26,6 +27,7 @@ var ALL_NAV_ITEMS = [
   { to: '/orders', icon: ShoppingCart, label: 'Orders', roles: ['super_admin', 'business_owner', 'staff'] },
   { to: '/customers', icon: Users, label: 'Customers', roles: ['super_admin', 'business_owner'] },
   { to: '/agents', icon: Bot, label: 'AI Agents', roles: ['super_admin', 'business_owner', 'staff'] },
+  { to: '/campaigns', icon: Megaphone, label: 'Campaigns', roles: ['super_admin', 'business_owner'] },
   { to: '/leads', icon: Target, label: 'Lead Finder', roles: ['super_admin'] },
   { to: '/conversations', icon: MessageSquare, label: 'Conversations', roles: ['super_admin', 'business_owner'] },
   { to: '/pdpl', icon: Shield, label: 'PDPL Compliance', roles: ['super_admin', 'business_owner'] },
